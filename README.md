@@ -1,9 +1,24 @@
-# VC_P5
+# Detección de Matrículas de Coches utilizando YOLOv8
 
-# Tarea 
+En esta práctica, nuestro objetivo es implementar un sistema de detección de matrículas de coches utilizando el modelo YOLOv8 para la detección de vehículos.
 
-En esta practica tenemos que detectar matriculas de coches, para ello hemos utilizado YOLO8 para la detección de vehiculos, si detectamos que es un coche o un camión, dividimos la celda aproximada a la mitad y detectamos todos los bordes, de ellos elegimos los bordes que tengan forma rectangular, y superen un cierto area. 
+### Primera parte ###
+#### Detección de matrículas usando bordes ####
+El proceso de detección consta de varios pasos para lograr obtener una matrícula:
 
+Primero, utilizamos el modelo YOLOv8 para detectar vehículos en la imagen. Si se identifica un coche o un camión (el modelo tiende a confundir coches grandes con camiones), dividimos la celda aproximadamente a la mitad para así acotar el lugar de búsqueda. Seguidamente, detectamos todos los bordes en la región de interés y filtramos por aquellos que tengan forma rectangular y superen cierto área. Este filtrado consta a su vez de varios pasos:
 
+1. **Filtrado de Rectángulos**: Para asegurarnos de que los bordes formen un rectángulo, calculamos el número de bordes obtenidos, buscando que sean cuatro. Así conseguimos quitar los bordes que tengan formas irregulares con menor o mayor número de bordes.
 
-Luego la segunda parte hemos entrenado YOLO8 con 50 epocas y un dataset de 350 imagenes las cuales consisten en coches con matriculas, hemos obtenido el dataset de Roboflow. Entrenado, podemos detectar automaticamente las matriculas de coche, luego para leer las matriculas en sí, hemos utilizado pytesseract el cual puede pasar una imagen a una String. Con ella cada vez que detectamos una matricula, la pasamos por pytesseract y luego dibujamos que lee de la matricula.
+2. **Filtrado por Área**: A su vez, usamos un pequeño umbral para el área y asegurarnos de quitar bordes que sean demasiado pequeños.
+
+5. **Filtrado por Diferencias de X e Y**: Calculamos las diferencias de X e Y de los lados de un rectángulo. Filtramos las matrículas donde estas diferencias son menores a cierto umbral, permitiendo que las fotos tomadas de lado también sean incluidas en las matrículas filtradas. Este es el paso que mayor filtrado realiza y el que más difícil y problemas ha dado para conseguir que el filtrado se ajuste a lo que buscamos. Hemos probado diversos métodos pero finalmente hemos optado por este ya que daba mejores resultados.
+
+### Segunda parte ###
+#### Detección de matrículas entrenando el modelo YOLOv8 y reconocimiento de texto ####
+
+En la segunda parte de esta práctica, entrenamos YOLOv8 con 50 épocas y un conjunto de datos de 350 imágenes. El conjunto de datos incluye imágenes de coches con matrículas y las etiquetas "vehicle" y "license-plate". Este conjunto de datos fue obtenido de [Roboflow](https://public.roboflow.com/object-detection/license-plates-us-eu/3/download/yolov8).
+
+Para la lectura de las matrículas, utilizamos la biblioteca pytesseract, que convierte una imagen en una cadena de texto. Cada vez que se detecta una matrícula, usamos pytesseract y realizamos un filtrado previo, ya que la cadena devuelta suele contener caracteres sin sentido provenientes de las distintas partes de la matrícula según su origen.
+
+Finalmente, dibujamos la matrícula en la propia ventana de la imagen para una fácil visualización.

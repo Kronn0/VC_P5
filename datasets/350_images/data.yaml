@@ -1,0 +1,13 @@
+test: C:/Users/miica/.conda/envs/VC_P1/P5/datasets/350_images/test
+train: C:/Users/miica/.conda/envs/VC_P1/P5/datasets/350_images/train
+val: C:/Users/miica/.conda/envs/VC_P1/P5/datasets/350_images/valid
+
+nc: 2
+names: ['license-plate', 'vehicle']
+
+roboflow:
+  workspace: samrat-sahoo
+  project: license-plates-f8vsn
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/samrat-sahoo/license-plates-f8vsn/dataset/3
