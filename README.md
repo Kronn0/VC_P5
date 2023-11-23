@@ -33,5 +33,10 @@ Finalmente, dibujamos la matrícula en la propia ventana de la imagen para una f
 
 ![image](https://github.com/Kronn0/VC_P5/assets/92724148/2377cb78-8b7f-4b7d-b91a-d4c98f7d1d94)
 
+##Matriz de confusión normalizada del entrenamiento:
+
+![image](https://github.com/Kronn0/VC_P5/assets/92724148/e8dd1ab7-c983-4a47-afe9-bd19bd03222c)
+
+
 
 
