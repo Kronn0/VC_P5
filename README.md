@@ -29,7 +29,7 @@ Para la lectura de las matrículas, utilizamos la biblioteca pytesseract, que co
 
 Finalmente, dibujamos la matrícula en la propia ventana de la imagen para una fácil visualización.
 
-![image](https://github.com/Kronn0/VC_P5/assets/92724148/f4aa4ab9-edcb-42c0-8501-831ace5628f4)
+![image](https://github.com/Kronn0/VC_P5/assets/92724148/973c19a0-29fa-4653-bd22-7d21014b6212)
 
 ![image](https://github.com/Kronn0/VC_P5/assets/92724148/2377cb78-8b7f-4b7d-b91a-d4c98f7d1d94)
 
